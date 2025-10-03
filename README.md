@@ -7,7 +7,7 @@ A beautifully designed, reusable, and developer-friendly React form component li
 ## Installation
 
 ```bash
-npm install formkit-ui
+npm install @pvn/formkit
 ```
 
 ## Local Development (using npm link)
@@ -22,13 +22,13 @@ To test this library in a local project without publishing it to npm, you can us
     ```
 
 2.  **In your other project's root directory (e.g., `my-react-app`):**
-    Run this command to link the `formkit-ui` library into your project's `node_modules`.
+    Run this command to link the `@pvn/formkit` library into your project's `node_modules`.
 
     ```bash
-    npm link formkit-ui
+    npm link @pvn/formkit
     ```
 
-Now, you can import components from `formkit-ui` in your project as if you had installed it from npm. Any changes you make in the `formkit-ui` library will be reflected immediately in your project (you might need to restart your development server).
+Now, you can import components from `@pvn/formkit` in your project as if you had installed it from npm. Any changes you make in the `@pvn/formkit` library will be reflected immediately in your project (you might need to restart your development server).
 
 ### Unlinking
 
@@ -36,7 +36,7 @@ When you're finished, you can unlink the library:
 
 1.  **In your other project's root directory:**
     ```bash
-    npm unlink formkit-ui
+    npm unlink @pvn/formkit
     ```
 
 2.  **In this library's root directory:**
