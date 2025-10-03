@@ -1,23 +1,35 @@
-import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import dts from 'vite-plugin-dts';
+import path from 'node:path';
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
-    return {
-      server: {
-        port: 3000,
-        host: '0.0.0.0',
-      },
-      plugins: [react()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, '.'),
+export default defineConfig({
+  plugins: [
+    react(),
+    dts({
+      insertTypesEntry: true,      // thêm entry vào exports
+      outDir: 'dist/types'
+    })
+  ],
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, 'index.ts'),
+      name: '@pvn/formkit',
+      formats: ['es', 'cjs'],      // thêm 'umd' nếu cần dùng qua <script>
+      fileName: (format) => format === 'es' ? 'index.mjs' : 'index.cjs'
+    },
+    rollupOptions: {
+      // Không bundle các peer deps (React...)
+      external: ['react', 'react-dom'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM'
         }
       }
-    };
+    },
+    sourcemap: true,
+    target: 'es2018',
+    minify: 'esbuild'              // mặc định; nhanh và đủ tốt
+  }
 });

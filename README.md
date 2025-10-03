@@ -4,24 +4,25 @@ A beautifully designed, reusable, and developer-friendly React form component li
 
 > **Note:** This project also includes a live, interactive documentation application where you can see the components in action. This `README.md` provides a static overview of the library's components and their usage.
 
-## Installation
-
-```bash
-npm install @pvn/formkit
-```
-
 ## Local Development (using npm link)
 
 To test this library in a local project without publishing it to npm, you can use `npm link`. This is a great way to develop and test components in a real-world application simultaneously.
 
 1.  **In this library's root directory (`formkit-ui`):**
+    Run this command to build project.
+
+    ```bash
+    npm run build
+    ```
+
+2.  **In this library's root directory (`formkit-ui`):**
     Run this command to create a global symbolic link from your computer to this project.
 
     ```bash
     npm link
     ```
 
-2.  **In your other project's root directory (e.g., `my-react-app`):**
+3.  **In your other project's root directory (e.g., `my-react-app`):**
     Run this command to link the `@pvn/formkit` library into your project's `node_modules`.
 
     ```bash
